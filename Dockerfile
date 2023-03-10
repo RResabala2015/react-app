@@ -16,6 +16,6 @@ COPY --from=builder /usr/src/app/dist /usr/share/nginx/html
 
 COPY ./etc/docker/nginx/default.conf /etc/nginx/conf.d
 
-EXPOSE 3000
+EXPOSE 8080
 
 ENTRYPOINT ["nginx", "-g", "daemon off;"]
