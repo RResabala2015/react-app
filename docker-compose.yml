@@ -1,0 +1,22 @@
+version: '3.7'
+
+services:
+#App front developer
+  app:
+    container_name: react-app
+    build:
+      context: .
+      dockerfile: Dockerfile
+    working_dir: /usr/src/app
+    
+    restart: unless-stopped
+
+    volumes:
+      - ./:/usr/src/app
+      
+    stdin_open: true
+    tty: true
+    ports:
+      - "${SERVER_PORT}:8080"
+    networks:
+      - network-react-app

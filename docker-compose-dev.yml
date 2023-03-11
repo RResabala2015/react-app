@@ -1,0 +1,27 @@
+version: '3.7'
+
+services:
+#App front developer
+  dev-app:
+    container_name: react-app
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    working_dir: /usr/src/app
+    
+    restart: unless-stopped
+
+    volumes:
+      - ./:/usr/src/app
+      
+    stdin_open: true
+    tty: true
+    ports:
+      - "8080:8080"
+    networks:
+      - react-app-net
+
+networks:
+  react-app-net:
+    external:
+      name: bridge
